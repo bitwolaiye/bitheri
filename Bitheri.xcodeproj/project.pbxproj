@@ -196,6 +196,7 @@
 		D61D01CC7E4394BFF72789DE /* BTKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTKey.m; sourceTree = "<group>"; };
 		D61D01DAC8BCD383607B7676 /* BTBlockProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTBlockProvider.m; sourceTree = "<group>"; };
 		D61D01E5F21A1E6E648A05E8 /* NSString+Base58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base58.h"; sourceTree = "<group>"; };
+		D61D0237B1B099E46B80E8FF /* ccMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccMemory.h; sourceTree = "<group>"; };
 		D61D024FFBE80427C9D2E998 /* BTScriptOpCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTScriptOpCodes.h; sourceTree = "<group>"; };
 		D61D02849C8CF7443614876B /* BTHDMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTHDMKeychain.h; sourceTree = "<group>"; };
 		D61D02889B35A2E27AE419CC /* BTScriptTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTScriptTest.m; sourceTree = "<group>"; };
@@ -660,6 +661,7 @@
 				D61D08E4511193E0FC821224 /* Log */,
 				D61D082A93F0A14CFBF2BD43 /* BIP39EnglishWords.plist */,
 				D61D03366870594DA71EFF05 /* Crypto */,
+				D61D0237B1B099E46B80E8FF /* ccMemory.h */,
 			);
 			path = Bitheri;
 			sourceTree = "<group>";

@@ -39,12 +39,18 @@
 #import "NSString+Base58.h"
 #import "NSData+Hash.h"
 #import "NSMutableData+Bitcoin.h"
+#import "ccMemory.h"
 #import <openssl/bn.h>
 
 #define SCRIPT_SUFFIX "\x88\xAC" // OP_EQUALVERIFY OP_CHECKSIG
 
-static const char base58chars[] = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+//static const char base58chars[] = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+static const UniChar base58chars[] = {
+        '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P',
+        'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n',
+        'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+};
 
 static void *secureAllocate(CFIndex allocSize, CFOptionFlags hint, void *info) {
     void *ptr = CFAllocatorAllocate(kCFAllocatorDefault, sizeof(CFIndex) + allocSize, hint);
@@ -105,38 +111,37 @@ CFAllocatorRef SecureAllocator() {
 @implementation NSString (Base58)
 
 + (NSString *)base58WithData:(NSData *)d {
-    NSUInteger i = d.length * 138 / 100 + 2;
-    char s[i];
-    BN_CTX *ctx = BN_CTX_new();
-    BIGNUM base, x, r;
+    if (! d) return nil;
 
-    BN_CTX_start(ctx);
-    BN_init(&base);
-    BN_init(&x);
-    BN_init(&r);
-    BN_set_word(&base, 58);
-    BN_bin2bn(d.bytes, (int) d.length, &x);
-    s[--i] = '\0';
+    size_t i, z = 0;
 
-    while (!BN_is_zero(&x)) {
-        BN_div(&x, &r, &x, &base, ctx);
-        s[--i] = base58chars[BN_get_word(&r)];
+    while (z < d.length && ((const uint8_t *)d.bytes)[z] == 0) z++; // count leading zeroes
+
+    uint8_t buf[(d.length - z)*138/100 + 1]; // log(256)/log(58), rounded up
+
+    CC_XZEROMEM(buf, sizeof(buf));
+
+    for (i = z; i < d.length; i++) {
+        uint32_t carry = ((const uint8_t *)d.bytes)[i];
+
+        for (size_t j = sizeof(buf); j > 0; j--) {
+            carry += (uint32_t)buf[j - 1] << 8;
+            buf[j - 1] = carry % 58;
+            carry /= 58;
+        }
+
+        CC_XZEROMEM(&carry, sizeof(carry));
     }
 
-    for (NSUInteger j = 0; j < d.length && *((const uint8_t *) d.bytes + j) == 0; j++) {
-        s[--i] = base58chars[0];
-    }
+    i = 0;
+    while (i < sizeof(buf) && buf[i] == 0) i++; // skip leading zeroes
 
-    BN_clear_free(&r);
-    BN_clear_free(&x);
-    BN_free(&base);
-    BN_CTX_end(ctx);
-    BN_CTX_free(ctx);
+    CFMutableStringRef s = CFStringCreateMutable(SecureAllocator(), z + sizeof(buf) - i);
 
-    NSString *ret = CFBridgingRelease(CFStringCreateWithCString(SecureAllocator(), &s[i], kCFStringEncodingUTF8));
-
-    OPENSSL_cleanse(&s[0], d.length * 138 / 100 + 2);
-    return ret;
+    while (z-- > 0) CFStringAppendCharacters(s, &base58chars[0], 1);
+    while (i < sizeof(buf)) CFStringAppendCharacters(s, &base58chars[buf[i++]], 1);
+    CC_XZEROMEM(buf, sizeof(buf));
+    return CFBridgingRelease(s);
 }
 
 + (NSString *)base58checkWithData:(NSData *)d {
