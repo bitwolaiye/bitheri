@@ -1109,7 +1109,7 @@ typedef enum {
         if (self.invBlockHashes.count > 0) {
             [self sendGetBlocksDataNextPiece];
         } else {
-            [self sendGetBlocksMessageWithLocators:@[block.blockHash, [BTBlockChain instance].blockLocatorArray.firstObject] andHashStop:nil];
+            [self sendGetBlocksMessageWithLocators:@[block.blockHash, [BTBlockChain instance].lastBlock] andHashStop:nil];
         }
     }
 }
