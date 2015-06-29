@@ -137,6 +137,7 @@
 		DADE54121933420300F5E4DD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DADE54101933420300F5E4DD /* InfoPlist.strings */; };
 		DADE54141933420300F5E4DD /* BitheriTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DADE54131933420300F5E4DD /* BitheriTests.m */; };
 		DADE542019334C8B00F5E4DD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADE541F19334C8B00F5E4DD /* CoreGraphics.framework */; };
+		DAE212EC1B40F3FE00EBB760 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1543B8196FDB89007F629E /* libz.dylib */; };
 		DAFA70B81A7138E200130717 /* BIP39EnglishWords.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = D61D082A93F0A14CFBF2BD43 /* BIP39EnglishWords.plist */; };
 		DAFA70BA1A71392E00130717 /* BIP39EnglishWords.plist in Resources */ = {isa = PBXBuildFile; fileRef = D61D082A93F0A14CFBF2BD43 /* BIP39EnglishWords.plist */; };
 		DC00C6BF008CEE40148AB07B /* BTHDAccountAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0F53C1C57310746403BBB6 /* BTHDAccountAddress.m */; };
@@ -303,7 +304,7 @@
 		DAC2DBFD1953D9AB00C67B0B /* BTTxTestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTxTestData.h; sourceTree = "<group>"; };
 		DAC2DBFE1953D9AB00C67B0B /* BTTxTestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTxTestData.m; sourceTree = "<group>"; };
 		DAC2DC001953D9C400C67B0B /* BTTxTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTxTest.m; sourceTree = "<group>"; };
-		DADE53F41933420300F5E4DD /* libBitheri.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBitheri.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DADE53F41933420300F5E4DD /* libBitheri.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libBitheri.a; path = Bitheri.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADE53F71933420300F5E4DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DADE53FB1933420300F5E4DD /* Bitheri-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bitheri-Prefix.pch"; sourceTree = "<group>"; };
 		DADE53FC1933420300F5E4DD /* Bitheri.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bitheri.h; sourceTree = "<group>"; };
@@ -330,6 +331,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE212EC1B40F3FE00EBB760 /* libz.dylib in Frameworks */,
 				DADE542019334C8B00F5E4DD /* CoreGraphics.framework in Frameworks */,
 				DADE53F81933420300F5E4DD /* Foundation.framework in Frameworks */,
 				983833E3E62E487BB1A66946 /* libPods.a in Frameworks */,
@@ -725,7 +727,7 @@
 			name = Bitheri;
 			productName = Bitheri;
 			productReference = DADE53F41933420300F5E4DD /* libBitheri.a */;
-			productType = "com.apple.product-type.library.static";
+			productType = "com.apple.product-type.library.dynamic";
 		};
 		DADE54031933420300F5E4DD /* BitheriTests */ = {
 			isa = PBXNativeTarget;

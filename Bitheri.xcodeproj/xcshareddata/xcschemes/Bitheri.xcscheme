@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DADE53F31933420300F5E4DD"
-               BuildableName = "libBitheri.a"
+               BuildableName = "Bitheri.dylib"
                BlueprintName = "Bitheri"
                ReferencedContainer = "container:Bitheri.xcodeproj">
             </BuildableReference>
@@ -27,7 +27,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9041BFC39B21576CAC1D9212"
+               BlueprintIdentifier = "7752F84F0D87FCE32181A61C"
                BuildableName = "libPods.a"
                BlueprintName = "Pods"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DADE53F31933420300F5E4DD"
-            BuildableName = "libBitheri.a"
+            BuildableName = "Bitheri.dylib"
             BlueprintName = "Bitheri"
             ReferencedContainer = "container:Bitheri.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DADE53F31933420300F5E4DD"
-            BuildableName = "libBitheri.a"
+            BuildableName = "Bitheri.dylib"
             BlueprintName = "Bitheri"
             ReferencedContainer = "container:Bitheri.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DADE53F31933420300F5E4DD"
-            BuildableName = "libBitheri.a"
+            BuildableName = "Bitheri.dylib"
             BlueprintName = "Bitheri"
             ReferencedContainer = "container:Bitheri.xcodeproj">
          </BuildableReference>
