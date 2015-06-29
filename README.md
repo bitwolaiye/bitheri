@@ -1,5 +1,7 @@
 Bitheri
 =======
+[![Build Status](https://travis-ci.org/bitwolaiye/bitheri.svg)](https://travis-ci.org/bitwolaiye/bitheri)
+
 Bitheri is a Bitcoin Library for iOS. It can may be use in MacOS also, but we didn't test it.
 
 There is also an [android version](https://github.com/bither/bitherj).
